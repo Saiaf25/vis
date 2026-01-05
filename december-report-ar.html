@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير تحليلات الفيدباك - ديسمبر 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            background: linear-gradient(135deg, #072660 0%, #4966ba 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d3a328;
+        }
+
+        .logo {
+            max-width: 300px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        h1 {
+            color: #072660;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #4966ba;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #072660 0%, #4966ba 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-card.gold {
+            background: linear-gradient(135deg, #d3a328 0%, #f4c542 100%);
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .metric-subtext {
+            font-size: 0.85em;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .charts-section {
+            margin-top: 40px;
+        }
+
+        .chart-container {
+            background: #e8edf7;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            color: #072660;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        .platform-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #e8edf7;
+        }
+
+        .platform-card.android {
+            border-color: #d3a328;
+        }
+
+        .platform-card.ios {
+            border-color: #4966ba;
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .platform-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            margin-left: 15px;
+            font-size: 1.2em;
+        }
+
+        .android .platform-icon {
+            background: #d3a328;
+        }
+
+        .ios .platform-icon {
+            background: #4966ba;
+        }
+
+        .platform-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #072660;
+        }
+
+        .platform-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #e8edf7;
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            color: #072660;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            color: #072660;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .platform-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="The Marketing Department" class="logo">
+            <h1>تقرير تحليلات الفيدباك</h1>
+            <p class="subtitle">1 ديسمبر 2025 ← 5 يناير 2026</p>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">إجمالي التثبيتات</div>
+                <div class="metric-value">1,174</div>
+                <div class="metric-subtext">أندرويد: 712 | iOS: 462</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">إجمالي مرات الظهور</div>
+                <div class="metric-value">542,828</div>
+                <div class="metric-subtext">مرات ظهور iOS</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">المهام المكتملة</div>
+                <div class="metric-value">52</div>
+                <div class="metric-subtext">أندرويد: 30 | iOS: 22</div>
+            </div>
+
+            <div class="metric-card gold">
+                <div class="metric-label">التسجيلات المكتملة</div>
+                <div class="metric-value">610</div>
+                <div class="metric-subtext">أندرويد: 231 | iOS: 379</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">متوسط نسبة النقر</div>
+                <div class="metric-value">1.50%</div>
+                <div class="metric-subtext">نسبة النقر إلى الظهور</div>
+            </div>
+
+            <div class="metric-card gold">
+                <div class="metric-label">معدل التحويل</div>
+                <div class="metric-value">8.52%</div>
+                <div class="metric-subtext">المهام/التسجيلات</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">معدل تحويل التثبيت</div>
+                <div class="metric-value">4.43%</div>
+                <div class="metric-subtext">المهام/التثبيتات</div>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <div class="chart-container">
+                <h2 class="chart-title">التثبيتات حسب المنصة</h2>
+                <canvas id="installsChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2 class="chart-title">مقارنة المقاييس الرئيسية</h2>
+                <canvas id="metricsChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2 class="chart-title">التسجيلات والمهام المكتملة</h2>
+                <canvas id="signupsChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2 class="chart-title">تحليل نسبة النقر ومعدل التحويل</h2>
+                <canvas id="ratesChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2 class="chart-title">المهام المكتملة حسب المنصة</h2>
+                <canvas id="missionsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="platform-comparison">
+            <div class="platform-card android">
+                <div class="platform-header">
+                    <div class="platform-icon">A</div>
+                    <div class="platform-name">أندرويد</div>
+                </div>
+                <div class="platform-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">التثبيتات</span>
+                        <span class="stat-value">712</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">مرات الظهور</span>
+                        <span class="stat-value">0 (مشكلة تقنية في Adjust - جاري العمل على حلها)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">التسجيلات المكتملة</span>
+                        <span class="stat-value">231</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">المهام المكتملة</span>
+                        <span class="stat-value">30</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">نسبة النقر</span>
+                        <span class="stat-value">0.94%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">معدل التحويل (المهام/التسجيلات)</span>
+                        <span class="stat-value">12.99%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">تحويل التثبيت (المهام/التثبيتات)</span>
+                        <span class="stat-value">4.21%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="platform-card ios">
+                <div class="platform-header">
+                    <div class="platform-icon">i</div>
+                    <div class="platform-name">iOS</div>
+                </div>
+                <div class="platform-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">التثبيتات</span>
+                        <span class="stat-value">462</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">مرات الظهور</span>
+                        <span class="stat-value">542,828</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">التسجيلات المكتملة</span>
+                        <span class="stat-value">379</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">المهام المكتملة</span>
+                        <span class="stat-value">22</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">نسبة النقر</span>
+                        <span class="stat-value">2.06%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">معدل التحويل (المهام/التسجيلات)</span>
+                        <span class="stat-value">5.80%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">تحويل التثبيت (المهام/التثبيتات)</span>
+                        <span class="stat-value">4.76%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const primaryColor = '#072660';
+        const goldColor = '#d3a328';
+        const lightColor = '#e8edf7';
+        const blueColor = '#4966ba';
+
+        // Installs Chart
+        new Chart(document.getElementById('installsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['أندرويد', 'iOS'],
+                datasets: [{
+                    label: 'التثبيتات',
+                    data: [712, 462],
+                    backgroundColor: [goldColor, blueColor],
+                    borderRadius: 10,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(7,38,96,0.1)'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Metrics Comparison Chart
+        new Chart(document.getElementById('metricsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['التثبيتات', 'الظهور (x1000)', 'التسجيلات', 'المهام'],
+                datasets: [{
+                    label: 'أندرويد',
+                    data: [712, 0, 231, 30],
+                    backgroundColor: goldColor,
+                    borderRadius: 10
+                }, {
+                    label: 'iOS',
+                    data: [462, 542.828, 379, 22],
+                    backgroundColor: blueColor,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2',
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(7,38,96,0.1)'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Signups Chart
+        new Chart(document.getElementById('signupsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['أندرويد', 'iOS'],
+                datasets: [{
+                    label: 'التسجيلات المكتملة',
+                    data: [231, 379],
+                    backgroundColor: goldColor,
+                    borderRadius: 10
+                }, {
+                    label: 'المهام المكتملة',
+                    data: [30, 22],
+                    backgroundColor: primaryColor,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2',
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(7,38,96,0.1)'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // CTR & Conversion Rate Chart
+        new Chart(document.getElementById('ratesChart'), {
+            type: 'line',
+            data: {
+                labels: ['نسبة النقر (%)', 'معدل التحويل (%)'],
+                datasets: [{
+                    label: 'أندرويد',
+                    data: [0.94, 12.99],
+                    borderColor: goldColor,
+                    backgroundColor: goldColor + '20',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }, {
+                    label: 'iOS',
+                    data: [2.06, 5.80],
+                    borderColor: blueColor,
+                    backgroundColor: blueColor + '20',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2',
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(7,38,96,0.1)'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Missions Completed Chart
+        new Chart(document.getElementById('missionsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['أندرويد', 'iOS'],
+                datasets: [{
+                    data: [30, 22],
+                    backgroundColor: [goldColor, blueColor],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: 'Baloo Bhaijaan 2',
+                                weight: '600'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
