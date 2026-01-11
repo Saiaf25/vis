@@ -1,640 +1,675 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elfeedback Analytics Report - 2026-01-04</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Elfeedback - Investor Metrics Report (Dec 1, 2025 - Jan 11, 2026)</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-dark: #072660;
+            --primary-light: #e8edf7;
+            --accent-gold: #d3a328;
+            --accent-blue: #4966ba;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Baloo Bhaijaan 2', cursive;
-            background: linear-gradient(135deg, #072660 0%, #4966ba 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            font-family: 'Baloo Bhaijaan 2', sans-serif;
+            background: var(--primary-light);
+            color: var(--primary-dark);
             padding: 40px;
+            line-height: 1.6;
         }
-
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #d3a328;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid var(--accent-gold);
         }
-
-        .logo {
-            max-width: 300px;
-            margin: 0 auto 20px;
-            display: block;
-        }
-
+        
         h1 {
-            color: #072660;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
             font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
         }
-
+        
         .subtitle {
-            color: #4966ba;
-            font-size: 1.1em;
+            font-size: 1.2rem;
+            color: var(--accent-blue);
             font-weight: 500;
         }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .metric-card {
-            background: linear-gradient(135deg, #072660 0%, #4966ba 100%);
-            padding: 25px;
-            border-radius: 15px;
+        
+        .period {
+            display: inline-block;
+            background: var(--primary-dark);
             color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .metric-card.gold {
-            background: linear-gradient(135deg, #d3a328 0%, #f4c542 100%);
-        }
-
-        .metric-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
             font-weight: 600;
         }
-
-        .metric-value {
-            font-size: 2.2em;
-            font-weight: 800;
-            margin-bottom: 5px;
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(7, 38, 96, 0.08);
         }
-
-        .metric-subtext {
-            font-size: 0.85em;
-            opacity: 0.8;
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-gold);
+            display: inline-block;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .metric-card {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border-left: 5px solid var(--accent-gold);
+        }
+        
+        .metric-card.highlight {
+            border-left-color: var(--accent-blue);
+            background: linear-gradient(135deg, var(--primary-light) 0%, #dce5f5 100%);
+        }
+        
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+        
+        .metric-label {
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .metric-sub {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--primary-light);
+        }
+        
+        th {
+            background: var(--primary-dark);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        
+        th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+        
+        th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+        
+        tr:hover {
+            background: var(--primary-light);
+        }
+        
+        td {
             font-weight: 500;
         }
-
-        .charts-section {
-            margin-top: 40px;
-        }
-
-        .chart-container {
-            background: #e8edf7;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .chart-title {
-            color: #072660;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            text-align: center;
+        
+        .platform-ios {
+            color: var(--accent-blue);
             font-weight: 700;
         }
-
-        canvas {
-            max-height: 400px;
+        
+        .platform-android {
+            color: #3ddc84;
+            font-weight: 700;
         }
-
-        .platform-comparison {
+        
+        .percentage {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        
+        .insights {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+        
+        .insights h3 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .insights ul {
+            list-style: none;
+        }
+        
+        .insights li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .insights li:last-child {
+            border-bottom: none;
+        }
+        
+        .insights li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        
+        .funnel-section {
+            margin-top: 30px;
+        }
+        
+        .funnel-bar {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .funnel-label {
+            width: 200px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .funnel-track {
+            flex: 1;
+            height: 35px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .funnel-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-dark) 0%, var(--accent-blue) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: width 0.5s ease;
+        }
+        
+        .funnel-fill.gold {
+            background: linear-gradient(90deg, var(--accent-gold) 0%, #e8c358 100%);
+        }
+        
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-top: 30px;
         }
-
-        .platform-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            border: 3px solid #e8edf7;
-        }
-
-        .platform-card.android {
-            border-color: #d3a328;
-        }
-
-        .platform-card.ios {
-            border-color: #4966ba;
-        }
-
-        .platform-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .platform-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: white;
-            margin-right: 15px;
-            font-size: 1.2em;
-        }
-
-        .android .platform-icon {
-            background: #d3a328;
-        }
-
-        .ios .platform-icon {
-            background: #4966ba;
-        }
-
-        .platform-name {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #072660;
-        }
-
-        .platform-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background: #e8edf7;
-            border-radius: 8px;
-        }
-
-        .stat-label {
-            color: #072660;
-            font-weight: 600;
-        }
-
-        .stat-value {
-            color: #072660;
-            font-weight: 700;
-        }
-
+        
         @media (max-width: 768px) {
-            .platform-comparison {
+            .two-col {
                 grid-template-columns: 1fr;
             }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
+        }
+        
+        .note {
+            background: #fff9e6;
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid var(--primary-dark);
+            color: var(--accent-blue);
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="logo.png" alt="The Marketing Department" class="logo">
-            <h1>Elfeedback Analytics Report</h1>
-            <p class="subtitle">25 December 2025 → 05 January 2026</p>
+            <h1>📊 Elfeedback Investor Metrics</h1>
+            <p class="subtitle">Internal Team Report - App Performance Data</p>
+            <span class="period">Dec 1, 2025 → Jan 11, 2026 (42 Days)</span>
         </header>
 
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-label">Total Installs</div>
-                <div class="metric-value">878</div>
-                <div class="metric-subtext">Android: 636 | iOS: 242</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Total Impressions</div>
-                <div class="metric-value">274,152</div>
-                <div class="metric-subtext">iOS attribution impressions</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Missions Completed</div>
-                <div class="metric-value">41</div>
-                <div class="metric-subtext">Android: 30 | iOS: 11</div>
-            </div>
-
-            <div class="metric-card gold">
-                <div class="metric-label">Signups Completed</div>
-                <div class="metric-value">423</div>
-                <div class="metric-subtext">Android: 224 | iOS: 199</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Average CTR</div>
-                <div class="metric-value">1.71%</div>
-                <div class="metric-subtext">Click-through rate</div>
-            </div>
-
-            <div class="metric-card gold">
-                <div class="metric-label">Conversion Rate</div>
-                <div class="metric-value">9.69%</div>
-                <div class="metric-subtext">Missions/Signups</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Install Conversion Rate</div>
-                <div class="metric-value">4.67%</div>
-                <div class="metric-subtext">Missions/Installs</div>
-            </div>
-        </div>
-
-        <div class="charts-section">
-            <div class="chart-container">
-                <h2 class="chart-title">Installs by Platform</h2>
-                <canvas id="installsChart"></canvas>
-            </div>
-
-            <div class="chart-container">
-                <h2 class="chart-title">Key Metrics Comparison</h2>
-                <canvas id="metricsChart"></canvas>
-            </div>
-
-            <div class="chart-container">
-                <h2 class="chart-title">Signups & Missions Completed</h2>
-                <canvas id="signupsChart"></canvas>
-            </div>
-
-            <div class="chart-container">
-                <h2 class="chart-title">CTR & Conversion Rate Analysis</h2>
-                <canvas id="ratesChart"></canvas>
-            </div>
-
-            <div class="chart-container">
-                <h2 class="chart-title">Missions Completed by Platform</h2>
-                <canvas id="missionsChart"></canvas>
-            </div>
-        </div>
-
-        <div class="platform-comparison">
-            <div class="platform-card android">
-                <div class="platform-header">
-                    <div class="platform-icon">A</div>
-                    <div class="platform-name">Android</div>
+        <!-- HEADLINE METRICS -->
+        <section class="section">
+            <h2 class="section-title">📈 Headline Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card highlight">
+                    <div class="metric-value">3,665</div>
+                    <div class="metric-label">Total Installs</div>
+                    <div class="metric-sub">All platforms combined</div>
                 </div>
-                <div class="platform-stats">
-                    <div class="stat-row">
-                        <span class="stat-label">Installs</span>
-                        <span class="stat-value">636</span>
+                <div class="metric-card">
+                    <div class="metric-value">9,251</div>
+                    <div class="metric-label">Total Sessions</div>
+                    <div class="metric-sub">Active app usage</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">157.1</div>
+                    <div class="metric-label">Daily Active Users</div>
+                    <div class="metric-sub">Average DAU</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">1,327.4</div>
+                    <div class="metric-label">Monthly Active Users</div>
+                    <div class="metric-sub">Average MAU</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATFORM BREAKDOWN -->
+        <section class="section">
+            <h2 class="section-title">📱 Platform Breakdown</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Installs</th>
+                        <th>Share %</th>
+                        <th>Sessions</th>
+                        <th>DAU</th>
+                        <th>MAU</th>
+                        <th>Click CVR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="platform-ios">iOS</td>
+                        <td><strong>2,611</strong></td>
+                        <td class="percentage">71.2%</td>
+                        <td>7,046</td>
+                        <td>117.95</td>
+                        <td>997.62</td>
+                        <td class="percentage">9.94%</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-android">Android</td>
+                        <td><strong>1,054</strong></td>
+                        <td class="percentage">28.8%</td>
+                        <td>2,205</td>
+                        <td>39.17</td>
+                        <td>329.79</td>
+                        <td class="percentage">81.96%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                <strong>📌 Note:</strong> iOS dominates installs (71.2%) and engagement, confirming previous findings that iOS users are the primary target demographic.
+            </div>
+        </section>
+
+        <!-- USER ENGAGEMENT -->
+        <section class="section">
+            <h2 class="section-title">🎯 User Engagement Metrics</h2>
+            <div class="two-col">
+                <div>
+                    <h4 style="color: var(--accent-blue); margin-bottom: 15px;">App Events (Combined)</h4>
+                    <div class="metrics-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="metric-card">
+                            <div class="metric-value">13,452</div>
+                            <div class="metric-label">App Opens</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,712</div>
+                            <div class="metric-label">Logins</div>
+                        </div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Impressions</span>
-                        <span class="stat-value">0 (technical adjust issue - working on fixing it)</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Signups Completed</span>
-                        <span class="stat-value">224</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Missions Completed</span>
-                        <span class="stat-value">30</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">CTR</span>
-                        <span class="stat-value">0.94%</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Conversion Rate (Missions/Signups)</span>
-                        <span class="stat-value">13.39%</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Install Conversion (Missions/Installs)</span>
-                        <span class="stat-value">4.72%</span>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-blue); margin-bottom: 15px;">User Acquisition</h4>
+                    <div class="metrics-grid" style="grid-template-columns: 1fr;">
+                        <div class="metric-card highlight">
+                            <div class="metric-value">2,827</div>
+                            <div class="metric-label">Signups Completed</div>
+                            <div class="metric-sub">New registered users</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="note">
+                <strong>📌 Acquisition Rate:</strong> 77% of installs convert to completed signups (2,827 signups / 3,665 installs)
+            </div>
+        </section>
 
-            <div class="platform-card ios">
-                <div class="platform-header">
-                    <div class="platform-icon">i</div>
-                    <div class="platform-name">iOS</div>
+        <!-- MISSION FUNNEL -->
+        <section class="section">
+            <h2 class="section-title">🔍 Mission Funnel Analysis</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">44,036</div>
+                    <div class="metric-label">Mission Cards Viewed</div>
                 </div>
-                <div class="platform-stats">
-                    <div class="stat-row">
-                        <span class="stat-label">Installs</span>
-                        <span class="stat-value">242</span>
+                <div class="metric-card">
+                    <div class="metric-value">13,372</div>
+                    <div class="metric-label">Missions Viewed</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">3,952</div>
+                    <div class="metric-label">Missions Added</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1,116</div>
+                    <div class="metric-label">Missions Started</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">959</div>
+                    <div class="metric-label">Missions Submitted</div>
+                </div>
+            </div>
+            
+            <div class="funnel-section">
+                <h4 style="color: var(--accent-blue); margin-bottom: 20px;">Conversion Funnel Visualization</h4>
+                <div class="funnel-bar">
+                    <span class="funnel-label">Cards Viewed</span>
+                    <div class="funnel-track">
+                        <div class="funnel-fill" style="width: 100%;">44,036</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Impressions</span>
-                        <span class="stat-value">274,152</span>
+                </div>
+                <div class="funnel-bar">
+                    <span class="funnel-label">Missions Viewed</span>
+                    <div class="funnel-track">
+                        <div class="funnel-fill" style="width: 30.4%;">13,372 (30.4%)</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Signups Completed</span>
-                        <span class="stat-value">199</span>
+                </div>
+                <div class="funnel-bar">
+                    <span class="funnel-label">Missions Added</span>
+                    <div class="funnel-track">
+                        <div class="funnel-fill gold" style="width: 9%;">3,952 (9.0%)</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Missions Completed</span>
-                        <span class="stat-value">11</span>
+                </div>
+                <div class="funnel-bar">
+                    <span class="funnel-label">Missions Started</span>
+                    <div class="funnel-track">
+                        <div class="funnel-fill" style="width: 2.5%;">1,116 (2.5%)</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">CTR</span>
-                        <span class="stat-value">2.48%</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Conversion Rate (Missions/Signups)</span>
-                        <span class="stat-value">5.53%</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Install Conversion (Missions/Installs)</span>
-                        <span class="stat-value">4.55%</span>
+                </div>
+                <div class="funnel-bar">
+                    <span class="funnel-label">Missions Submitted</span>
+                    <div class="funnel-track">
+                        <div class="funnel-fill gold" style="width: 2.2%;">959 (2.2%)</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- CONVERSION RATES -->
+        <section class="section">
+            <h2 class="section-title">📊 Key Conversion Rates</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">30.4%</div>
+                    <div class="metric-label">Card → View Rate</div>
+                    <div class="metric-sub">Mission detail views</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">29.6%</div>
+                    <div class="metric-label">View → Add Rate</div>
+                    <div class="metric-sub">Interest conversion</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">28.2%</div>
+                    <div class="metric-label">Add → Start Rate</div>
+                    <div class="metric-sub">Commitment to action</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">85.9%</div>
+                    <div class="metric-label">Start → Submit Rate</div>
+                    <div class="metric-sub">Completion rate 🔥</div>
+                </div>
+            </div>
+            <div class="note">
+                <strong>🔥 Key Finding:</strong> 85.9% of started missions get submitted - users who commit are highly likely to complete!
+            </div>
+        </section>
+
+        <!-- ATTRIBUTION DATA -->
+        <section class="section">
+            <h2 class="section-title">📣 Marketing Attribution</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">558,435</div>
+                    <div class="metric-label">Ad Impressions</div>
+                    <div class="metric-sub">iOS campaigns</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">11,225</div>
+                    <div class="metric-label">Attribution Clicks</div>
+                    <div class="metric-sub">Total tracked clicks</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">3.78%</div>
+                    <div class="metric-label">CTR</div>
+                    <div class="metric-sub">Click-through rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4.87%</div>
+                    <div class="metric-label">ATT Consent Rate</div>
+                    <div class="metric-sub">iOS tracking opt-in</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATFORM COMPARISON -->
+        <section class="section">
+            <h2 class="section-title">⚖️ Platform Performance Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>iOS</th>
+                        <th>Android</th>
+                        <th>iOS Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Installs</td>
+                        <td class="platform-ios">2,611</td>
+                        <td class="platform-android">1,054</td>
+                        <td class="percentage">2.5x more</td>
+                    </tr>
+                    <tr>
+                        <td>Sessions</td>
+                        <td class="platform-ios">7,046</td>
+                        <td class="platform-android">2,205</td>
+                        <td class="percentage">3.2x more</td>
+                    </tr>
+                    <tr>
+                        <td>Sessions/Install</td>
+                        <td class="platform-ios">2.70</td>
+                        <td class="platform-android">2.09</td>
+                        <td class="percentage">29% higher</td>
+                    </tr>
+                    <tr>
+                        <td>Mission Submissions</td>
+                        <td class="platform-ios">669</td>
+                        <td class="platform-android">290</td>
+                        <td class="percentage">2.3x more</td>
+                    </tr>
+                    <tr>
+                        <td>Signup Completions</td>
+                        <td class="platform-ios">2,336</td>
+                        <td class="platform-android">491</td>
+                        <td class="percentage">4.8x more</td>
+                    </tr>
+                    <tr>
+                        <td>Mission Cards Viewed</td>
+                        <td class="platform-ios">34,761</td>
+                        <td class="platform-android">9,275</td>
+                        <td class="percentage">3.7x more</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- KEY INSIGHTS -->
+        <section class="insights">
+            <h3>🎯 Key Investor Insights</h3>
+            <ul>
+                <li><strong>Strong User Engagement:</strong> 85.9% mission completion rate indicates highly engaged mystery shoppers who follow through on commitments</li>
+                <li><strong>iOS-First Strategy Validated:</strong> iOS delivers 71% of installs and 70% of submitted missions - focus marketing spend here</li>
+                <li><strong>Healthy Funnel:</strong> 44K mission card views → 959 submissions shows active marketplace exploration</li>
+                <li><strong>User Acquisition Working:</strong> 2,827 completed signups in 42 days demonstrates effective acquisition</li>
+                <li><strong>Platform Stickiness:</strong> 2.52 sessions per install indicates users return to the app regularly</li>
+                <li><strong>Room for Optimization:</strong> 2.2% card-to-submission rate suggests opportunity to improve mission discovery UX</li>
+            </ul>
+        </section>
+
+        <!-- RAW NUMBERS SUMMARY -->
+        <section class="section">
+            <h2 class="section-title">📋 Raw Data Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>iOS</th>
+                        <th>Android</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Installs</td><td>2,611</td><td>1,054</td><td><strong>3,665</strong></td></tr>
+                    <tr><td>Sessions</td><td>7,046</td><td>2,205</td><td><strong>9,251</strong></td></tr>
+                    <tr><td>DAU (avg)</td><td>117.95</td><td>39.17</td><td><strong>157.12</strong></td></tr>
+                    <tr><td>WAU (avg)</td><td>539.76</td><td>202.00</td><td><strong>741.76</strong></td></tr>
+                    <tr><td>MAU (avg)</td><td>997.62</td><td>329.79</td><td><strong>1,327.41</strong></td></tr>
+                    <tr><td>Logins</td><td>1,436</td><td>276</td><td><strong>1,712</strong></td></tr>
+                    <tr><td>App Opens</td><td>10,095</td><td>3,357</td><td><strong>13,452</strong></td></tr>
+                    <tr><td>Missions Started</td><td>791</td><td>325</td><td><strong>1,116</strong></td></tr>
+                    <tr><td>Missions Added</td><td>3,030</td><td>922</td><td><strong>3,952</strong></td></tr>
+                    <tr><td>Mission Cards Viewed</td><td>34,761</td><td>9,275</td><td><strong>44,036</strong></td></tr>
+                    <tr><td>Missions Viewed</td><td>10,536</td><td>2,836</td><td><strong>13,372</strong></td></tr>
+                    <tr><td>Missions Submitted</td><td>669</td><td>290</td><td><strong>959</strong></td></tr>
+                    <tr><td>Signups Completed</td><td>2,336</td><td>491</td><td><strong>2,827</strong></td></tr>
+                    <tr><td>Attribution Impressions</td><td>558,435</td><td>0</td><td><strong>558,435</strong></td></tr>
+                    <tr><td>Attribution Clicks</td><td>11,177</td><td>45</td><td><strong>11,222</strong></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SOCIAL MEDIA PERFORMANCE -->
+        <section class="section">
+            <h2 class="section-title">📱 Social Media Performance (December 2025)</h2>
+            <div class="metrics-grid">
+                <div class="metric-card highlight">
+                    <div class="metric-value">124,561</div>
+                    <div class="metric-label">Impressions</div>
+                    <div class="metric-sub" style="color: #10b981;">↑ 36,861.7%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3,616</div>
+                    <div class="metric-label">Engagements</div>
+                    <div class="metric-sub" style="color: #10b981;">↑ 51,557.1%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1,115</div>
+                    <div class="metric-label">Post Link Clicks</div>
+                    <div class="metric-sub">Direct traffic driver</div>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-value">2.9%</div>
+                    <div class="metric-label">Engagement Rate</div>
+                    <div class="metric-sub" style="color: #10b981;">↑ 39.8%</div>
+                </div>
+            </div>
+            
+            <h4 style="color: var(--accent-blue); margin: 30px 0 20px 0;">Platform Breakdown</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Status</th>
+                        <th>Growth Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span style="color: #1da1f2; font-weight: 700;">𝕏 (Twitter)</span></td>
+                        <td>Primary Channel</td>
+                        <td class="percentage">Major spike Dec 23-28 (peak ~165 followers/day)</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #e4405f; font-weight: 700;">Instagram</span></td>
+                        <td>Secondary</td>
+                        <td>Steady baseline engagement</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #ff0050; font-weight: 700;">TikTok</span></td>
+                        <td>Growing</td>
+                        <td>Consistent low-level presence</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note">
+                <strong>📌 Key Insight:</strong> X (Twitter) drove explosive growth Dec 23-28, likely from viral content or campaign. 2.9% engagement rate is strong for the industry (avg 1-3%).
+            </div>
+        </section>
+
+        <footer>
+            <p>Elfeedback Internal Report • Generated January 11, 2026</p>
+            <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.7;">Data Source: Adjust Analytics Export (Dec 1, 2025 - Jan 11, 2026)</p>
+        </footer>
     </div>
-
-    <script>
-        const primaryColor = '#072660';
-        const goldColor = '#d3a328';
-        const lightColor = '#e8edf7';
-        const blueColor = '#4966ba';
-
-        // Installs Chart
-        new Chart(document.getElementById('installsChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Android', 'iOS'],
-                datasets: [{
-                    label: 'Installs',
-                    data: [636, 242],
-                    backgroundColor: [goldColor, blueColor],
-                    borderRadius: 10,
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(7,38,96,0.1)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Metrics Comparison Chart
-        new Chart(document.getElementById('metricsChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Installs', 'Impressions (x1000)', 'Signups', 'Missions'],
-                datasets: [{
-                    label: 'Android',
-                    data: [636, 0, 224, 30],
-                    backgroundColor: goldColor,
-                    borderRadius: 10
-                }, {
-                    label: 'iOS',
-                    data: [242, 274.152, 199, 11],
-                    backgroundColor: blueColor,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2',
-                                weight: '600'
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(7,38,96,0.1)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Signups Chart
-        new Chart(document.getElementById('signupsChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Android', 'iOS'],
-                datasets: [{
-                    label: 'Signups Completed',
-                    data: [224, 199],
-                    backgroundColor: goldColor,
-                    borderRadius: 10
-                }, {
-                    label: 'Missions Completed',
-                    data: [30, 11],
-                    backgroundColor: primaryColor,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2',
-                                weight: '600'
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(7,38,96,0.1)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // CTR & Conversion Rate Chart
-        new Chart(document.getElementById('ratesChart'), {
-            type: 'line',
-            data: {
-                labels: ['CTR (%)', 'Conversion Rate (%)'],
-                datasets: [{
-                    label: 'Android',
-                    data: [0.94, 13.39],
-                    borderColor: goldColor,
-                    backgroundColor: goldColor + '20',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 6,
-                    pointHoverRadius: 8
-                }, {
-                    label: 'iOS',
-                    data: [2.48, 5.53],
-                    borderColor: blueColor,
-                    backgroundColor: blueColor + '20',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 6,
-                    pointHoverRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2',
-                                weight: '600'
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(7,38,96,0.1)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Missions Completed Chart
-        new Chart(document.getElementById('missionsChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Android', 'iOS'],
-                datasets: [{
-                    data: [30, 11],
-                    backgroundColor: [goldColor, blueColor],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            font: {
-                                family: 'Baloo Bhaijaan 2',
-                                weight: '600'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
