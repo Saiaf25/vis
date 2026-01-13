@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex">
+  <title>Install Geography (Saudi focus)</title>
+  <style>
+    :root {
+      --bg:#0b1020;
+      --card:#111a33;
+      --muted:#9fb0d0;
+      --text:#e9efff;
+      --border:rgba(255,255,255,.12);
+      --shadow:0 18px 55px rgba(0,0,0,.45);
+      --r:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 900px at 20% -20%, rgba(85,214,255,.18), transparent 55%),
+                  radial-gradient(1000px 800px at 110% 10%, rgba(255,210,74,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 40px;}
+    header{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between;margin-bottom:16px;}
+    h1{margin:0;font-size:30px;letter-spacing:-.02em}
+    .subp{margin:4px 0 0 0;color:var(--muted);max-width:760px}
+    .badge{font-family:var(--mono);font-size:12px;padding:7px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(0,0,0,.18);color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;}
+    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+           border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;}
+    .hd{padding:14px 14px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:10px;align-items:center;}
+    .hd h2{margin:0;font-size:16px}
+    .bd{padding:12px 14px 16px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    @media (max-width:900px){.two{grid-template-columns:1fr}}
+    .kpi{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .k{border:1px solid var(--border);border-radius:14px;padding:10px 12px;background:rgba(0,0,0,.14)}
+    .k .t{font-family:var(--mono);font-size:11px;color:var(--muted)}
+    .k .v{font-size:22px;margin-top:6px}
+    table{width:100%;border-collapse:separate;border-spacing:0 10px;}
+    th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;padding:0 10px}
+    td{padding:12px 10px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(0,0,0,.14)}
+    td:first-child{border-left:1px solid var(--border);border-top-left-radius:14px;border-bottom-left-radius:14px}
+    td:last-child{border-right:1px solid var(--border);border-top-right-radius:14px;border-bottom-right-radius:14px}
+    .right{text-align:right}
+    /* SVG text styles */
+    .ttl{font-size:16px;font-weight:700;fill:rgba(233,239,255,.95)}
+    .sub{font-size:12px;fill:rgba(159,176,208,.95)}
+    .lbl{font-size:13px;fill:rgba(233,239,255,.92)}
+    .val{font-family:var(--mono);font-size:13px;fill:rgba(233,239,255,.95)}
+    .big{font-family:var(--mono);font-size:34px;fill:rgba(233,239,255,.95)}
+    .bar{fill:rgba(85,214,255,.78)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Install Geography Report (Saudi focus)</h1>
+        <p class="subp">Based on your Adjust export. This answers: “What is driving installs outside Saudi?”</p>
+      </div>
+      <div class="badge">Source: Adjust export CSV</div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div class="hd">
+          <h2>Saudi vs Outside Saudi</h2>
+          <span class="badge">KSA target</span>
+        </div>
+        <div class="bd two">
+          <div style="border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,.14);padding:10px;">
+            
+    <svg viewBox="0 0 520 260" width="100%" height="auto" role="img" aria-label="Share of installs">
+      <text x="18" y="26" class="ttl">Share of installs</text>
+
+      <g transform="translate(0,18)">
+        <circle cx="130" cy="130" r="78" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="18"></circle>
+
+        <!-- Outside Saudi (full ring) -->
+        <circle cx="130" cy="130" r="78" fill="none" stroke="rgba(85,214,255,.95)" stroke-width="18"
+                stroke-dasharray="490.09 0.00" transform="rotate(-90 130 130)"></circle>
+
+        <!-- Saudi segment (on top) -->
+        <circle cx="130" cy="130" r="78" fill="none" stroke="rgba(255,210,74,.95)" stroke-width="18"
+                stroke-dasharray="0.00 490.09" transform="rotate(-90 130 130)"></circle>
+
+        <text x="130" y="124" text-anchor="middle" class="big">32</text>
+        <text x="130" y="148" text-anchor="middle" class="sub">total installs</text>
+      </g>
+
+      <g transform="translate(280,72)">
+        <rect x="0" y="0" width="16" height="16" rx="4" fill="rgba(255,210,74,.95)"></rect>
+        <text x="24" y="13" class="lbl">Saudi Arabia</text>
+        <text x="24" y="36" class="val">0 installs</text>
+
+        <rect x="0" y="66" width="16" height="16" rx="4" fill="rgba(85,214,255,.95)"></rect>
+        <text x="24" y="79" class="lbl">Outside Saudi</text>
+        <text x="24" y="102" class="val">32 installs</text>
+      </g>
+    </svg>
+    
+          </div>
+          <div>
+            <div class="kpi">
+              <div class="k"><div class="t">Total installs</div><div class="v">32</div></div>
+              <div class="k"><div class="t">Saudi installs</div><div class="v">0</div></div>
+              <div class="k"><div class="t">Outside Saudi installs</div><div class="v">32</div></div>
+            </div>
+
+            <div style="margin-top:12px;padding:12px;border-radius:16px;border:1px solid var(--border);background:rgba(0,0,0,.14);color:var(--muted);">
+              <b style="color:var(--text);">What this means:</b><br/>
+              Your current install volume is <b style="color:var(--text);">100% outside Saudi</b> in this export period.
+              The drivers below show <b style="color:var(--text);">which channels</b> and <b style="color:var(--text);">which countries</b> produce those installs.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd">
+          <h2>Top countries (all installs)</h2>
+          <span class="badge">Sorted by installs</span>
+        </div>
+        <div class="bd" style="border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,.14);padding:10px;">
+          
+    <svg viewBox="0 0 900 470" width="100%" height="auto" role="img" aria-label="Top 10 countries by installs">
+      <text x="20" y="26" class="ttl">Top 10 countries by installs</text>
+      <text x="20" y="44" class="sub">Total installs: 32</text>
+      
+        <g transform="translate(0,60)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Egypt</text>
+          <rect x="230" y="0" width="640.00" height="28" rx="8" class="bar"></rect>
+          <text x="880.00" y="20.16" class="val">7</text>
+        </g>
+        
+        <g transform="translate(0,98)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">United States</text>
+          <rect x="230" y="0" width="365.71" height="28" rx="8" class="bar"></rect>
+          <text x="605.71" y="20.16" class="val">4</text>
+        </g>
+        
+        <g transform="translate(0,136)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Germany</text>
+          <rect x="230" y="0" width="274.29" height="28" rx="8" class="bar"></rect>
+          <text x="514.29" y="20.16" class="val">3</text>
+        </g>
+        
+        <g transform="translate(0,174)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Bahrain</text>
+          <rect x="230" y="0" width="274.29" height="28" rx="8" class="bar"></rect>
+          <text x="514.29" y="20.16" class="val">3</text>
+        </g>
+        
+        <g transform="translate(0,212)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">France</text>
+          <rect x="230" y="0" width="182.86" height="28" rx="8" class="bar"></rect>
+          <text x="422.86" y="20.16" class="val">2</text>
+        </g>
+        
+        <g transform="translate(0,250)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Mauritania</text>
+          <rect x="230" y="0" width="91.43" height="28" rx="8" class="bar"></rect>
+          <text x="331.43" y="20.16" class="val">1</text>
+        </g>
+        
+        <g transform="translate(0,288)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">United Kingdom</text>
+          <rect x="230" y="0" width="91.43" height="28" rx="8" class="bar"></rect>
+          <text x="331.43" y="20.16" class="val">1</text>
+        </g>
+        
+        <g transform="translate(0,326)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Switzerland</text>
+          <rect x="230" y="0" width="91.43" height="28" rx="8" class="bar"></rect>
+          <text x="331.43" y="20.16" class="val">1</text>
+        </g>
+        
+        <g transform="translate(0,364)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Poland</text>
+          <rect x="230" y="0" width="91.43" height="28" rx="8" class="bar"></rect>
+          <text x="331.43" y="20.16" class="val">1</text>
+        </g>
+        
+        <g transform="translate(0,402)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Palestinian Territory, Occupied</text>
+          <rect x="230" y="0" width="91.43" height="28" rx="8" class="bar"></rect>
+          <text x="331.43" y="20.16" class="val">1</text>
+        </g>
+        
+    </svg>
+     
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd">
+          <h2>Top channels (all installs)</h2>
+          <span class="badge">Where installs come from</span>
+        </div>
+        <div class="bd two">
+          <div style="border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,.14);padding:10px;">
+            
+    <svg viewBox="0 0 900 280" width="100%" height="auto" role="img" aria-label="Installs by channel">
+      <text x="20" y="26" class="ttl">Installs by channel</text>
+      <text x="20" y="44" class="sub">Total installs: 32</text>
+      
+        <g transform="translate(0,60)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Organic</text>
+          <rect x="230" y="0" width="640.00" height="28" rx="8" class="bar"></rect>
+          <text x="880.00" y="20.16" class="val">20</text>
+        </g>
+        
+        <g transform="translate(0,98)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Facebook</text>
+          <rect x="230" y="0" width="160.00" height="28" rx="8" class="bar"></rect>
+          <text x="400.00" y="20.16" class="val">5</text>
+        </g>
+        
+        <g transform="translate(0,136)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">Google Ads</text>
+          <rect x="230" y="0" width="160.00" height="28" rx="8" class="bar"></rect>
+          <text x="400.00" y="20.16" class="val">5</text>
+        </g>
+        
+        <g transform="translate(0,174)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">SocialBio_&amp;Web&amp;Printables</text>
+          <rect x="230" y="0" width="32.00" height="28" rx="8" class="bar"></rect>
+          <text x="272.00" y="20.16" class="val">1</text>
+        </g>
+        
+        <g transform="translate(0,212)">
+          <text x="218" y="20.16" text-anchor="end" class="lbl">TikTok for Business</text>
+          <rect x="230" y="0" width="32.00" height="28" rx="8" class="bar"></rect>
+          <text x="272.00" y="20.16" class="val">1</text>
+        </g>
+        
+    </svg>
+     
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr><th>Channel</th><th class="right">Installs</th><th class="right">Share</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Organic</td><td class='right'>20</td><td class='right'>62%</td></tr><tr><td>Facebook</td><td class='right'>5</td><td class='right'>16%</td></tr><tr><td>Google Ads</td><td class='right'>5</td><td class='right'>16%</td></tr><tr><td>SocialBio_&amp;Web&amp;Printables</td><td class='right'>1</td><td class='right'>3%</td></tr><tr><td>TikTok for Business</td><td class='right'>1</td><td class='right'>3%</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:10px;padding:12px;border-radius:16px;border:1px solid var(--border);background:rgba(0,0,0,.14);color:var(--muted);">
+              <b style="color:var(--text);">Client-friendly read:</b><br/>
+              “Most installs came from <b style="color:var(--text);">Organic</b>. The platform is not delivering Saudi installs in this dataset.”
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="hd">
+          <h2>Raw table (country × channel)</h2>
+          <span class="badge">Audit view</span>
+        </div>
+        <div class="bd" style="overflow:auto;">
+          <table>
+            <thead>
+              <tr><th>Country</th><th>Channel</th><th class="right">Installs</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Egypt</td><td>Organic</td><td class='right'>5</td></tr><tr><td>Bahrain</td><td>Organic</td><td class='right'>3</td></tr><tr><td>Egypt</td><td>Facebook</td><td class='right'>2</td></tr><tr><td>United States</td><td>Google Ads</td><td class='right'>2</td></tr><tr><td>France</td><td>Organic</td><td class='right'>2</td></tr><tr><td>Germany</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Germany</td><td>SocialBio_&amp;Web&amp;Printables</td><td class='right'>1</td></tr><tr><td>United States</td><td>Organic</td><td class='right'>1</td></tr><tr><td>United Kingdom</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Palestinian Territory, Occupied</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Mauritania</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Malaysia</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Italy</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Algeria</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Denmark</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Belgium</td><td>Organic</td><td class='right'>1</td></tr><tr><td>Poland</td><td>Google Ads</td><td class='right'>1</td></tr><tr><td>Germany</td><td>Google Ads</td><td class='right'>1</td></tr><tr><td>Ethiopia</td><td>Google Ads</td><td class='right'>1</td></tr><tr><td>United States</td><td>Facebook</td><td class='right'>1</td></tr><tr><td>Netherlands</td><td>Facebook</td><td class='right'>1</td></tr><tr><td>Jordan</td><td>Facebook</td><td class='right'>1</td></tr><tr><td>Switzerland</td><td>TikTok for Business</td><td class='right'>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
